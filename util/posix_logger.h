@@ -1,0 +1,8 @@
+//
+// Created by 刘文景 on 2021/3/26.
+//
+
+#ifndef STORAGE_LSMDB_POSIX_LOGGER_H
+#define STORAGE_LSMDB_POSIX_LOGGER_H
+
+#endif  // STORAGE_LSMDB_POSIX_LOGGER_H
