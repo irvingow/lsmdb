@@ -158,6 +158,7 @@ target_sources(lsmdb
         "util/coding.cc"
         "util/coding.h"
         "util/mutexlock.h"
+        "util/status.cc"
         "port/port.h"
         "port/port_stdcxx.h"
         "port/thread_annotations.h"

@@ -2,6 +2,9 @@
 // Created by 刘文景 on 2021/3/25.
 //
 
+#ifndef STORAGE_LSMDB_INCLUDE_CACHE_H_
+#define STORAGE_LSMDB_INCLUDE_CACHE_H_
+
 #include <cstdint>
 #include <functional>
 #include <memory>
@@ -91,3 +94,5 @@ class Cache {
 };
 
 }  // namespace lsmdb
+
+#endif // STORAGE_LSMDB_INCLUDE_CACHE_H_
