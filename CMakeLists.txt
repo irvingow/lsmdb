@@ -331,6 +331,7 @@ if (LSMDB_BUILD_TESTS)
     endfunction(lsmdb_test)
 
     lsmdb_test("util/cache_test.cc")
+    lsmdb_test("util/status_test.cc")
 
 endif(LSMDB_BUILD_TESTS)
 
