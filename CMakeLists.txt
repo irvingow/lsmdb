@@ -333,6 +333,7 @@ if (LSMDB_BUILD_TESTS)
 
     lsmdb_test("util/cache_test.cc")
     lsmdb_test("util/status_test.cc")
+    lsmdb_test("util/hash_test.cc")
 
 endif(LSMDB_BUILD_TESTS)
 
