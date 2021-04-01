@@ -153,6 +153,7 @@ target_sources(lsmdb
         PRIVATE
         "${PROJECT_BINARY_DIR}/${LSMDB_PORT_CONFIG_DIR}/port_config.h"
         "util/cache.cc"
+        "util/env.cc"
         "util/hash.cc"
         "util/hash.h"
         "util/coding.cc"
