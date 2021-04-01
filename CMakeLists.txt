@@ -160,6 +160,8 @@ target_sources(lsmdb
         "util/coding.h"
         "util/mutexlock.h"
         "util/status.cc"
+        "util/logging.cc"
+        "util/logging.h"
         "port/port.h"
         "port/port_stdcxx.h"
         "port/thread_annotations.h"
@@ -334,6 +336,7 @@ if (LSMDB_BUILD_TESTS)
     lsmdb_test("util/cache_test.cc")
     lsmdb_test("util/status_test.cc")
     lsmdb_test("util/hash_test.cc")
+    lsmdb_test("util/logging_test.cc")
 
 endif(LSMDB_BUILD_TESTS)
 
