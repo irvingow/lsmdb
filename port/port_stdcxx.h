@@ -37,6 +37,7 @@
 #include <string>
 
 #include "port/thread_annotations.h"
+#include "util/noncopyable.h"
 
 namespace lsmdb {
 namespace port {
@@ -44,13 +45,10 @@ namespace port {
 class CondVar;
 
 // Thinly wraps std::mutex.
-class LOCKABLE Mutex {
+class LOCKABLE Mutex : public noncopyable {
     public:
     Mutex() = default;
     ~Mutex() = default;
-
-    Mutex(const Mutex&) = delete;
-    Mutex& operator=(const Mutex&) = delete;
 
     void Lock() EXCLUSIVE_LOCK_FUNCTION() { mu_.lock(); }
     void Unlock() UNLOCK_FUNCTION() { mu_.unlock(); }
@@ -62,13 +60,10 @@ class LOCKABLE Mutex {
 };
 
 // Thinly wraps std::condition_variable.
-class CondVar {
+class CondVar : public noncopyable {
 public:
     explicit CondVar(Mutex* mu) : mu_(mu) { assert(mu != nullptr); }
     ~CondVar() = default;
-
-    CondVar(const CondVar&) = delete;
-    CondVar& operator=(const CondVar&) = delete;
 
     void Wait() {
         std::unique_lock<std::mutex> lock(mu_->mu_, std::adopt_lock);

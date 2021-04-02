@@ -7,6 +7,7 @@
 
 #include "port/port.h"
 #include "port/thread_annotations.h"
+#include "util/noncopyable.h"
 
 namespace lsmdb {
 
@@ -20,15 +21,12 @@ namespace lsmdb {
 //   ... some complex code, possibly with multiple return paths ...
 // }
 
-class SCOPED_LOCKABLE MutexLock {
+class SCOPED_LOCKABLE MutexLock : public noncopyable {
 public:
     explicit MutexLock(port::Mutex* mu) EXCLUSIVE_LOCK_FUNCTION(mu) : mu_(mu) {
         this->mu_->Lock();
     }
     ~MutexLock() UNLOCK_FUNCTION() { this->mu_->Unlock(); }
-
-    MutexLock(const MutexLock&) = delete;
-    MutexLock& operator=(const MutexLock&) = delete;
 
 private:
     port::Mutex* const mu_;

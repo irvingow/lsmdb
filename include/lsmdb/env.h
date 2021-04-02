@@ -13,6 +13,7 @@
 
 #include "lsmdb/export.h"
 #include "lsmdb/status.h"
+#include "util/noncopyable.h"
 
 // This workaround can be removed when leveldb::Env::DeleteFile is removed.
 #if defined(_WIN32)
@@ -41,12 +42,9 @@ class SequentialFile;
 class Slice;
 class WritableFile;
 
-class LSMDB_EXPORT Env {
+class LSMDB_EXPORT Env : public noncopyable {
  public:
   Env();
-
-  Env(const Env&) = delete;
-  Env& operator=(const Env&) = delete;
 
   virtual ~Env();
 
@@ -178,12 +176,9 @@ class LSMDB_EXPORT Env {
 };
 
 // A file abstraction for reading sequentially through a file
-class LSMDB_EXPORT SequentialFile {
+class LSMDB_EXPORT SequentialFile : public noncopyable {
  public:
   SequentialFile() = default;
-
-  SequentialFile(const SequentialFile&) = delete;
-  SequentialFile& operator=(const SequentialFile&) = delete;
 
   virtual ~SequentialFile();
 
@@ -206,12 +201,9 @@ class LSMDB_EXPORT SequentialFile {
 };
 
 // A file abstraction for randomly reading the contents of a file.
-class LSMDB_EXPORT RandomAccessFile {
+class LSMDB_EXPORT RandomAccessFile : public noncopyable{
  public:
   RandomAccessFile() = default;
-
-  RandomAccessFile(const RandomAccessFile&) = delete;
-  RandomAccessFile& operator=(const RandomAccessFile&) = delete;
 
   virtual ~RandomAccessFile();
 
@@ -231,12 +223,9 @@ class LSMDB_EXPORT RandomAccessFile {
 // A file abstraction for sequential writing. The implementation
 // must provide buffering since callers may append small fragments
 // at a time to the file.
-class LSMDB_EXPORT WritableFile {
+class LSMDB_EXPORT WritableFile : public noncopyable {
  public:
   WritableFile() = default;
-
-  WritableFile(const WritableFile&) = delete;
-  WritableFile& operator=(const WritableFile&) = delete;
 
   virtual ~WritableFile();
 
@@ -247,12 +236,9 @@ class LSMDB_EXPORT WritableFile {
 };
 
 // An interface for writing log messages.
-class LSMDB_EXPORT Logger {
+class LSMDB_EXPORT Logger : public noncopyable {
  public:
   Logger() = default;
-
-  Logger(const Logger&) = delete;
-  Logger& operator=(const Logger&) = delete;
 
   virtual ~Logger();
 
@@ -261,12 +247,9 @@ class LSMDB_EXPORT Logger {
 };
 
 // Identifies a locked file.
-class LSMDB_EXPORT FileLock {
+class LSMDB_EXPORT FileLock : public noncopyable {
  public:
   FileLock() = default;
-
-  FileLock(const FileLock&) = default;
-  FileLock& operator=(const FileLock&) = delete;
 
   virtual ~FileLock();
 };

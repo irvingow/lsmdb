@@ -162,6 +162,7 @@ target_sources(lsmdb
         "util/status.cc"
         "util/logging.cc"
         "util/logging.h"
+        "util/noncopyable.h"
         "port/port.h"
         "port/port_stdcxx.h"
         "port/thread_annotations.h"

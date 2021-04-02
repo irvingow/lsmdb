@@ -8,6 +8,7 @@
 #include <cstdint>
 #include <functional>
 #include <memory>
+#include <util/noncopyable.h>
 
 #include "lsmdb/slice.h"
 
@@ -20,12 +21,9 @@ class Cache;
 // least-recently-used eviction policy.
 std::shared_ptr<Cache> NewLRUCache(size_t capacity);
 
-class Cache {
+class Cache : public noncopyable {
  public:
   Cache() = default;
-
-  Cache(const Cache&) = delete;
-  Cache& operator=(const Cache&) = delete;
 
   // Destroy all existing entries by calling the "deleter"
   // function that was passed to the constructor.
