@@ -846,7 +846,7 @@ namespace {
 //     return default_env.env();
 //   }
 template <typename EnvType>
-class SingletonEnv : noncopyable {
+class SingletonEnv : public noncopyable {
 public:
   SingletonEnv() {
 #if !defined(NDEBUG)

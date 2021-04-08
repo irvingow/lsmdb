@@ -152,6 +152,9 @@ add_library(lsmdb "")
 target_sources(lsmdb
         PRIVATE
         "${PROJECT_BINARY_DIR}/${LSMDB_PORT_CONFIG_DIR}/port_config.h"
+        "db/skiplist.h"
+        "util/arena.h"
+        "util/arena.cc"
         "util/cache.cc"
         "util/env.cc"
         "util/hash.cc"
@@ -159,6 +162,7 @@ target_sources(lsmdb
         "util/coding.cc"
         "util/coding.h"
         "util/mutexlock.h"
+        "util/random.h"
         "util/status.cc"
         "util/logging.cc"
         "util/logging.h"
@@ -338,6 +342,8 @@ if (LSMDB_BUILD_TESTS)
     lsmdb_test("util/status_test.cc")
     lsmdb_test("util/hash_test.cc")
     lsmdb_test("util/logging_test.cc")
+    lsmdb_test("db/skiplist_test.cc")
+    lsmdb_test("util/arena_test.cc")
 
 endif(LSMDB_BUILD_TESTS)
 
