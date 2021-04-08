@@ -32,6 +32,7 @@ char* Arena::AllocateFallback(size_t bytes) {
 
   char* result = alloc_ptr_;
   alloc_ptr_ += bytes;
+  alloc_bytes_remaining_ -= bytes;
   return result;
 }
 
