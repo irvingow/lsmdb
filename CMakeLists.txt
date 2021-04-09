@@ -203,6 +203,12 @@ else (WIN32)
             )
 endif (WIN32)
 
+# MemEnv is not part of the interface and could be pulled to a separate library.
+target_sources(lsmdb
+        PRIVATE
+        "helpers/memenv/memenv.cc"
+        "helpers/memenv/memenv.h")
+
 #
 # PUBLIC, PRIVATE, INTERFACE
 # refer to this answer:https://stackoverflow.com/questions/26243169/cmake-target-include-directories-meaning-of-scope
@@ -344,6 +350,7 @@ if (LSMDB_BUILD_TESTS)
     lsmdb_test("util/logging_test.cc")
     lsmdb_test("db/skiplist_test.cc")
     lsmdb_test("util/arena_test.cc")
+    lsmdb_test("helpers/memenv/memenv_test.cc")
 
 endif(LSMDB_BUILD_TESTS)
 
